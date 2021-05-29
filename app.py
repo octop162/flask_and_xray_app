@@ -29,8 +29,11 @@ def put():
         put_message(message)
         return json.dumps({'message': 'Success.', 'put_message': message})
     except Exception as e :
-        print(e)
-        return json.dumps({'message': 'Unexpected error.'})
+        # print(e)
+        return json.dumps({
+            'message': 'Unexpected error.',
+            'error': str(e).replace("\n", "")
+        })
 
 def put_message(message):
     dynamodb = boto3.resource('dynamodb', region_name='ap-northeast-1')
