@@ -28,7 +28,8 @@ def put():
     try:
         put_message(message)
         return json.dumps({'message': 'Success.', 'put_message': message})
-    except:
+    except Exception as e :
+        print(e)
         return json.dumps({'message': 'Unexpected error.'})
 
 def put_message(message):
